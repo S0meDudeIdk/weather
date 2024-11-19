@@ -114,8 +114,7 @@ a{
     text-decoration: none;
 }
 
-img { 
-    height: auto ;
+img { height: auto ;}
 
     input,
     button{
@@ -139,12 +138,11 @@ img {
         font-size: 10px;
         scroll-behavior: smooth;
     }
-}
 
 /* background */
 body {
     background-color: var(--background);
-    background: url(/assets/css/imgGenUi/UI_bg.jpg);
+    background: url(/assets/css/imgGenUi/UI_bg.jpg); 
     /* background: url(/assets/css/imgGenUi/nut.jpg); */
     width: 100%;
     height: 100dvh  ;
@@ -162,9 +160,7 @@ body {
     outline-offset: 2px;
 }
 
-::selection {
-    background-color: var(--white-alpha-8);
-}
+::selection {background-color: var(--white-alpha-8);}
 
 ::-webkit-scrollbar {
     width: 6px;
@@ -176,19 +172,17 @@ body {
     border-radius: var(--radius-pill);
 }
 
+/* Material icon*/
+
 @font-face {
-	font-family: 'themify';
-	src:url('fonts/themify.eot?-fvbane');
-	src:url('fonts/themify.eot?#iefix-fvbane') format('embedded-opentype'),
-		url('fonts/themify.woff?-fvbane') format('woff'),
-		url('fonts/themify.ttf?-fvbane') format('truetype'),
-		url('fonts/themify.svg?-fvbane#themify') format('svg');
-	font-weight: normal;
-	font-style: normal;
+	font-family: 'material symbol rounded';
+    font-size: normal;
+    font-weight: 400;
+	src: url('/assets/font/material-symbol-rounded.woff2') format('woff2');
 }
 
-.m-icon {
-    font-family: 'themify';
+.material-symbols-outlined {
+    font-family: 'material symbol rounded';
     font-weight: normal;
     font-style: normal;
     font-size: 2.4rem;
@@ -198,8 +192,8 @@ body {
     white-space: nowrap;
     word-wrap: normal;
     direction: ltr;
-    font-feature-settings: "liga";
-    -webkit-font-feature-settings: "liga";
+    font-feature-settings: 'liga';
+    -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased; 
     height: 1em;
     height: 1em;
@@ -232,7 +226,7 @@ body {
 
 .has-state:hover {box-shadow: var(--shadow-1);}
 
-.has-state:is(:focus ,:focus-visible) {box-shadow: none; }
+.has-state:is(:focus, :focus-visible) {box-shadow: none; }
 
 .has-state::before{
     content: "";
@@ -245,7 +239,7 @@ body {
 
 .has-state:hover::before{background-color: var(--white-alpha-4); }
 
-.has-state:is(:focus ,:focus-visible)::before{
+.has-state:is(:focus, :focus-visible)::before {
     background-color: var(--white-alpha-8);
     animation: ripple 250ms ease forwards;
 }
@@ -297,7 +291,7 @@ body {
 .heading {
     color: var(--white);
     font-size: var(--heading);
-    line-height: 1;
+    line-height: 1.1;
 }
 
 .title-1 {font-size: var(--title-1);}
@@ -331,10 +325,10 @@ body {
 [ HEADER ] 
  */ 
 
-
+.search-view,
 .header .btn-primary .span {display: none;}
 
-.logo img {width: 60px;}
+.logo img {width: 75px;}
 
 .header .container,
 .header-action{
@@ -354,12 +348,12 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    height: 100svh;
+    height: 100svh; /* mobile user */
     background-color: var(--surface);
     color: var(--on-surface);
     clip-path: circle(4% at calc(100% - 102px) 5%);
     opacity: 0;
-    visibility: visible; 
+    visibility: hidden; 
     z-index: 4;
     transition: clip-path 500ms ease;
 }
@@ -415,7 +409,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.search-wrapper > material-symbols-outlined {display: none;}
+.search-wrapper > .material-symbols-outlined {display: none;}
 
 .search-wrapper .icon-btn {
     background-color: transparent;
@@ -493,7 +487,7 @@ article.container::before{
  .current-weather-card .weapper {
     margin-block: 12px;
     display: flex;
-    gap: 1px;
+    gap: 8px;
     align-items: center;
  }
 
@@ -507,9 +501,8 @@ article.container::before{
     border-block-start: 1px solid var(--outline);
 }
 
-/* could fix it for the calendar and location icon position */
-.current-weather-card .meta-list{
-    display: start;
+.current-weather-card .meta-item{
+    display: flex;
     align-items: center; 
     gap: 8px;
 }
@@ -559,7 +552,7 @@ article.container::before{
 
  .highlight-list .title-3 {
     color: var(--on-surface-variant);
-    margin-block-end: 20px;
+    margin-block-end: 10px;
  }
 
  .highlights .card-sm {
@@ -688,7 +681,7 @@ article.container::before{
     text-align: center;
     gap: 12px 24px;
     margin-block-start: 28px;
-    display: none; 
+    /*display: none;*/ 
 }
 
 .fade-in .footer {display: flex;}
@@ -844,18 +837,126 @@ article.container::before{
     /*Custom property */
 
     :root{
-        /*Font size */
-       /* --heading: 8rem; 
-        --title-2: 2rem; */
+       /* Font size */
+       --heading: 8rem; 
+       --title-2: 2rem;
     } 
 
-     /* reused style */ 
+      /* reused style */  
     .container {padding: 40px;}
 
     .card-lg {padding: 36px;}
+
+    .card-sm {padding: 24px;}
+
+    .title-1{ --title-1: 3.6rem;}
+
+    .highlight-card.two .card-item{column-gap: 24px;}
+
+    /* header */ 
+    
+     .header .icon-btn{display: none;}
+
+     .logo img {width: 100px;}
+
+    .header{
+        position: relative;
+        height: 120px;
+        z-index: 4;
+    }
+
+    .header .container{
+        padding-block: 0;
+        height: 100%;
+    }  
+
+    .search-view, 
+    .search-view.active{
+        all: unset;
+        display: block;
+        position: relative;
+        width: 500px;
+        animation: none;
+    }
+
+    .search-wrapper {border-block-end: none;}
+
+    .search-wrapper > .material-symbols-outlined {display: block;}
+    
+    .search-field,
+    .search-view .view-list {background-color: var(--surface);}
+
+    .search-field{
+        height: 56px;
+        border-radius: var(--radius-28);
+    }
+
+    .search-result,
+    .search-view:not(:focus-within) .search-result {display: none;}
+
+    .search-view:focus-within .search-result.active {display: block;}
+    
+    .search-view:has(.search-result.active):focus-within 
+    .search-field{
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .search-view .view-list{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: 360px;
+        border-radius: 0 0 var(--radius-28) var(--radius-28);
+        border-block-start: 1px solid var(--outline);
+        overflow-y: auto; /* firefox */
+        overflow-y: overlay;
+    }
+
+    .search-view .view-list:empty{min-height: 120px;}
+    
+    .search-view .view-list::-webkit-scrollbar-button{height: 20px;}
+
+    .search-view:is(:hover, :has(.view-item):hover){
+        filter: drop-shadow(var(--shadow-1));
+    }
+
+    .search-view:is(:focus-within, :has(.view-list):focus-within){
+        filter: drop-shadow(var(--shadow-2));
+    }
+
+    /**
+    main
+    **/
+
+    main{
+        height: calc(100vh - 120px);
+        height: calc(100svh - 120px);
+    }
+
+    article.container {
+        grid-template-columns: 360px minmax(0, 1fr);
+        gap: 40px;
+    }
+
+    .current-weather .weather-icon {width: 80px;}
+
+    .forecast-card .title-2{--title-2: 2.2rem;}
+
+    .highlight-card:nth-child(-n+2) {height: 200px;}
+
+    .highlight-card:nth-child(n+3){height: 150px;}
+
+    .highlight-card .material-symbols-outlined {font-size: 4.8rem;}
+
+    .slider-list { gap: 16px;}
+
+}
+
+  /*
+ Responsive for larger than 1400px screen 
+ */ 
+ @media (min-width: 1400px ){
+    .highlight-list {grid-template-columns: repeat(4, 1fr) ;}
  }
-
-
-
-
-
