@@ -23,7 +23,7 @@
     --on-background: #EAE6F2;
     --surface: #f5f5f525;
     --on-surface: #DDDAE5;
-    --on-surface-variant: #7B7980; 
+    --on-surface-variant: rgb(92, 92, 92);
     --on-surface-variant-2: #B9B6BF;
     --outline: #3E3D40;
     --bg-aqi-1: #89E589;
@@ -56,7 +56,7 @@
     --heading: 5.6rem;
     --title-1: 2rem;
     --title-2: 1.8rem;
-    --title-3: 1.6rem;
+    --title-3: 2rem;
     --body-1: 2.2rem;
     --body-2: 2rem;
     --body-3: 1.6rem;
@@ -529,7 +529,7 @@ article.container::before{
 .forecast-card .icon-wrapper { gap:8px; }
 
 .forecast-card .label-1 {
-    color: var(--on-surface-variant);
+    color: whitesmoke;
     font-weight: var(--weight-semiBold);
 }
 
@@ -637,7 +637,9 @@ article.container::before{
     margin-inline: -16px;
  }
 
- .slider-container::-webkit-scrollbar {display: none;}
+ .slider-container::-webkit-scrollbar{
+    display: active;
+}
 
  .slider-list{
     display: flex;
@@ -681,7 +683,7 @@ article.container::before{
     text-align: center;
     gap: 12px 24px;
     margin-block-start: 28px;
-    /*display: none;*/ 
+    display: none;
 }
 
 .fade-in .footer {display: flex;}
@@ -822,6 +824,7 @@ article.container::before{
         border-bottom-left-radius: var(--radius-16);
         border-top-left-radius: var(--radius-16);
     }
+
 
     .slider-list::before{display: none;}
 
