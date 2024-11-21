@@ -5,49 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--change tab name -->
-    <title>Weather Cum</title>
+    <title>Weather Forecast</title>
     
     <meta name="title" content="WeatherCum">
     <meta name="description" content="A weather app made by Dreamy Bull">
 
     <!--tab icon-->
-    <link rel="shortcut icon" href="./assets/weather/clouds.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="/General/assets/weather/clouds.svg" type="image/svg+xml">
 
     <!-- Google Font-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     
     <!-- Css -->
-    <link rel="stylesheet" href="./assets/css/general.css">
+    <link rel="stylesheet" href="/General/assets/css/general.css">
 
     <!-- Js-->
-    
+    <script src="/General/assets/js/app.js" type="module"></script>
+    <script src="/General/assets/js/route.js" type="module"></script>
+     
 </head>
 
 
 
 <body>
+
+
     <!-- #HEADER -->
+
+
+    
         <header class="header">
             <div class="container">
-        
+                
                 <a href="#" class="logo">
-                    <img src="/assets/css/imgGenUi/logo.png" width="182" height="29" alt="logo">
+                    <img src="/General/assets/css/imgGenUi/logo.png" width="182" height="29" alt="logo">
                 </a>
 
                 <!-- Search view -->
                 <div class="search-view" data-search-view>
 
                     <div class="search-wrapper">
-                        <input type="search" name="search" placeholder="Search City..." autocomplete="off" class="search-field " data-search-field>
-                            <span class="material-symbols-outlined leading-icon">
-                                search
-                            </span>
+                        <input type="search" name="search" placeholder="Search City..." autocomplete="off" class="search-field " 
+                        data-search-field>
+                            
+                        <span class="material-symbols-outlined leading-icon">search</span>
 
                         <button class="icon-btn leading-icon has-state" aria-label="close search" data-search-toggler>
-                            <span class="material-symbols-outlined">
-                                arrow_back
-                            </span>
+                            
+                            <span class="material-symbols-outlined">arrow_back</span>
                         </button>
                     </div>
 
@@ -74,6 +80,7 @@
                             </li>
     
                         </ul>
+                    
                     </div>
 
                 </div>
@@ -100,7 +107,7 @@
         </header>
     
     <main>
-        <article class="container">
+        <article class="container" data-container>
 
             <div class="content-left">
                 <!-- 
@@ -115,7 +122,7 @@
                             <p class="heading">25&deg;<sup>c</sup></p>
 
                             <!--sun icon-->
-                            <img src="/assets/weather/clear-day.png" width="64px" height="64px" alt="Overcast Clouds" class="weather-icon">
+                            <img src="/General/assets/weather/clear-day.png" width="64px" height="64px" alt="Overcast Clouds" class="weather-icon">
                         </div>
 
                         <p class="body-3">Overcast Clouds</p>
@@ -155,7 +162,7 @@
                             <li class="card-item">
 
                                 <div class="icon-wrapper">
-                                    <img src="/assets/weather/night.png" width="36" height="36" alt="Overcast Clouds"
+                                    <img src="/General/assets/weather/night.png" width="36" height="36" alt="Overcast Clouds"
                                         class="weather-icon">
 
                                     <span class="span">
@@ -172,7 +179,7 @@
                             <li class="card-item">
 
                                 <div class="icon-wrapper">
-                                    <img src="/assets/weather/night.png" alt="Overcast Clouds" width="36" height="36" 
+                                    <img src="/General/assets/weather/night.png" alt="Overcast Clouds" width="36" height="36" 
                                         class="weather-icon">
 
                                     <span class="span">
@@ -189,7 +196,7 @@
                             <li class="card-item">
 
                                 <div class="icon-wrapper">
-                                    <img src="/assets/weather/night.png" alt="Overcast Clouds" width="36" height="36" 
+                                    <img src="/General/assets/weather/night.png" alt="Overcast Clouds" width="36" height="36" 
                                         class="weather-icon">
 
                                     <span class="span">
@@ -206,7 +213,7 @@
                             <li class="card-item">
 
                                 <div class="icon-wrapper">
-                                    <img src="/assets/weather/night.png" alt="Overcast Clouds" width="36" height="36" 
+                                    <img src="/General/assets/weather/night.png" alt="Overcast Clouds" width="36" height="36" 
                                         class="weather-icon">
 
                                     <span class="span">
@@ -223,7 +230,7 @@
                             <li class="card-item">
 
                                 <div class="icon-wrapper">
-                                    <img src="/assets/weather/night.png" alt="Overcast Clouds" width="36" height="36" 
+                                    <img src="/General/assets/weather/night.png" alt="Overcast Clouds" width="36" height="36" 
                                         class="weather-icon">
 
                                     <span class="span">
@@ -412,7 +419,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">25&deg;</p>
 
@@ -424,7 +431,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">25&deg;</p>
 
@@ -436,7 +443,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">25&deg;</p>
 
@@ -448,7 +455,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">25&deg;</p>
 
@@ -460,7 +467,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">25&deg;</p>
 
@@ -472,7 +479,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">25&deg;</p>
 
@@ -484,7 +491,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/clear.svg" width="48" height="48" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">25&deg;</p>
 
@@ -500,7 +507,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">12 km/h</p>
 
@@ -512,7 +519,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">12 km/h</p>
 
@@ -524,7 +531,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">12 km/h</p>
 
@@ -536,7 +543,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">12 km/h</p>
 
@@ -548,7 +555,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">12 km/h</p>
 
@@ -560,7 +567,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">12 km/h</p>
 
@@ -572,7 +579,7 @@
 
                                     <p class="body-3">03 PM</p>
 
-                                    <img src="/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
+                                    <img src="/General/assets/weather/direction.png" width="38" height="38" loading="lazy" alt="" class="weather-icon" title="">
 
                                     <p class="body-3">12 km/h</p>
 
@@ -598,7 +605,7 @@
                     <p class="body-3">
                         Powered By <a href="https://x.com/dreamybullxxx" title="Black Man Bussing" target="_blank" 
                             rel="noopener">
-                            <img src="/assets/weather/dreamybull.jpg" width="60" height="10" loading="lazy" alt="DreamyBull">
+                            <img src="/General/assets/weather/dreamybull.jpg" width="60" height="10" loading="lazy" alt="DreamyBull">
                         </a>
                     </p>
                 </footer>

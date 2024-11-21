@@ -8,7 +8,7 @@
 }
 
 body{
-    background: url('/assets/css/imgLogin/LoginBackground/bg.jpg');
+    background: url('../assets/css/imgLogin/LoginBackground/bg.jpg');
     width: 100%;
     height: 100dvh;
     background-size: cover;

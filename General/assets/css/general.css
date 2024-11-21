@@ -140,7 +140,7 @@
 /* background */
 body {
     background-color: var(--background);
-    background: url(/assets/css/imgGenUi/UI_bg.jpg); 
+    background: url(/General/assets/css/imgGenUi/UI_bg.jpg); 
     /* background: url(/assets/css/imgGenUi/nut.jpg); */
     width: 100%;
     height: 100dvh  ;
@@ -186,7 +186,7 @@ body {
 	font-family: 'material symbol rounded';
     font-size: normal;
     font-weight: 400;
-	src: url('/assets/font/material-symbol-rounded.woff2') format('woff2');
+	src: url('/General/assets/font/material-symbol-rounded.woff2') format('woff2');
 }
 
 .material-symbols-outlined {
