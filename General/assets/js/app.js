@@ -59,7 +59,7 @@ searchField.addEventListener("input", function () {
           searchItem.classList.add("view-item");
 
           searchItem.innerHTML = `
-            <span class="m-icon">location_on</span>
+            <span class="material-symbols-outlined">location_on</span>
 
             <div>
               <p class="item-title">${name}</p>
@@ -143,7 +143,7 @@ export const updateWeather = function (lat, lon) {
       <div class="weapper">
         <p class="heading">${parseInt(temp)}&deg;<sup>c</sup></p>
 
-        <img src="./assets/images/weather_icons/${icon}.png" width="64" height="64" alt="${description}"
+        <img src="/General/assets/weather/${icon}.png" width="64" height="64" alt="${description}"
           class="weather-icon">
       </div>
 
@@ -152,13 +152,13 @@ export const updateWeather = function (lat, lon) {
       <ul class="meta-list">
 
         <li class="meta-item">
-          <span class="m-icon">calendar_today</span>
+          <span class="material-symbols-outlined">calendar_today</span>
 
           <p class="title-3 meta-text">${module.getDate(dateUnix, timezone)}</p>
         </li>
 
         <li class="meta-item">
-          <span class="m-icon">location_on</span>
+          <span class="material-symbols-outlined">location_on</span>
 
           <p class="title-3 meta-text" data-location></p>
         </li>
@@ -196,7 +196,7 @@ export const updateWeather = function (lat, lon) {
 
             <div class="wrapper">
 
-              <span class="m-icon">air</span>
+              <span class="material-symbols-outlined">air</span>
 
               <ul class="card-list">
 
@@ -241,7 +241,7 @@ export const updateWeather = function (lat, lon) {
             <div class="card-list">
 
               <div class="card-item">
-                <span class="m-icon">clear_day</span>
+                <span class="material-symbols-outlined">clear_day</span>
 
                 <div>
                   <p class="label-1">Sunrise</p>
@@ -251,7 +251,7 @@ export const updateWeather = function (lat, lon) {
               </div>
 
               <div class="card-item">
-                <span class="m-icon">clear_night</span>
+                <span class="material-symbols-outlined">clear_night</span>
 
                 <div>
                   <p class="label-1">Sunset</p>
@@ -269,7 +269,7 @@ export const updateWeather = function (lat, lon) {
             <h3 class="title-3">Humidity</h3>
 
             <div class="wrapper">
-              <span class="m-icon">humidity_percentage</span>
+              <span class="material-symbols-outlined">humidity_percentage</span>
 
               <p class="title-1">${humidity}<sub>%</sub></p>
             </div>
@@ -281,7 +281,7 @@ export const updateWeather = function (lat, lon) {
             <h3 class="title-3">Pressure</h3>
 
             <div class="wrapper">
-              <span class="m-icon">airwave</span>
+              <span class="material-symbols-outlined">airwave</span>
 
               <p class="title-1">${pressure}<sub>hPa</sub></p>
             </div>
@@ -293,7 +293,7 @@ export const updateWeather = function (lat, lon) {
             <h3 class="title-3">Visibility</h3>
 
             <div class="wrapper">
-              <span class="m-icon">visibility</span>
+              <span class="material-symbols-outlined">visibility</span>
 
               <p class="title-1">${visibility / 1000}<sub>km</sub></p>
             </div>
@@ -305,7 +305,7 @@ export const updateWeather = function (lat, lon) {
             <h3 class="title-3">Feels Like</h3>
 
             <div class="wrapper">
-              <span class="m-icon">thermostat</span>
+              <span class="material-symbols-outlined">thermostat</span>
 
               <p class="title-1">${parseInt(feels_like)}&deg;<sup>c</sup></p>
             </div>
@@ -359,7 +359,7 @@ export const updateWeather = function (lat, lon) {
 
             <p class="body-3">${module.getHours(dateTimeUnix, timezone)}</p>
 
-            <img src="./assets/images/weather_icons/${icon}.png" width="48" height="48" loading="lazy" alt="${description}"
+            <img src="/General/assets/weather/${icon}.png" width="48" height="48" loading="lazy" alt="${description}"
               class="weather-icon" title="${description}">
 
             <p class="body-3">${parseInt(temp)}&deg;</p>
@@ -376,7 +376,7 @@ export const updateWeather = function (lat, lon) {
 
           <p class="body-3">${module.getHours(dateTimeUnix, timezone)}</p>
 
-          <img src="./assets/images/weather_icons/direction.png" width="48" height="48" loading="lazy" alt="direction"
+          <img src="/General/assets/weather/direction.png" width="48" height="48" loading="lazy" alt="direction"
             class="weather-icon" style="transform: rotate(${windDirection - 180}deg)">
 
           <p class="body-3">${parseInt(module.mps_to_kmh(windSpeed))} km/h</p>
@@ -413,7 +413,7 @@ export const updateWeather = function (lat, lon) {
 
         li.innerHTML = `
           <div class="icon-wrapper">
-            <img src="./assets/images/weather_icons/${icon}.png" width="36" height="36" alt="${description}"
+            <img src="/General/assets/weather/${icon}.png" width="36" height="36" alt="${description}"
               class="weather-icon" title="${description}">
 
             <span class="span">
