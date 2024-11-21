@@ -21,16 +21,23 @@
     <link rel="stylesheet" href="/assets/css/general.css">
 
     <!-- Js-->
+    <script src="/assets/js/app.js" type="module"></script>
+    <script src="/assets/js/route.js" type="module"></script>
      
 </head>
 
 
 
 <body>
+
+
     <!-- #HEADER -->
+
+
+    
         <header class="header">
             <div class="container">
-        
+                
                 <a href="#" class="logo">
                     <img src="/assets/css/imgGenUi/logo.png" width="182" height="29" alt="logo">
                 </a>
@@ -39,15 +46,14 @@
                 <div class="search-view" data-search-view>
 
                     <div class="search-wrapper">
-                        <input type="search" name="search" placeholder="Search City..." autocomplete="off" class="search-field " data-search-field>
-                            <span class="material-symbols-outlined leading-icon">
-                                search
-                            </span>
+                        <input type="search" name="search" placeholder="Search City..." autocomplete="off" class="search-field " 
+                        data-search-field>
+                            
+                        <span class="material-symbols-outlined leading-icon">search</span>
 
                         <button class="icon-btn leading-icon has-state" aria-label="close search" data-search-toggler>
-                            <span class="material-symbols-outlined">
-                                arrow_back
-                            </span>
+                            
+                            <span class="material-symbols-outlined">arrow_back</span>
                         </button>
                     </div>
 
@@ -74,6 +80,7 @@
                             </li>
     
                         </ul>
+                    
                     </div>
 
                 </div>
@@ -100,7 +107,7 @@
         </header>
     
     <main>
-        <article class="container">
+        <article class="container" data-container>
 
             <div class="content-left">
                 <!-- 
