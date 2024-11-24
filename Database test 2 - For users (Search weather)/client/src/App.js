@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css'; 
-/*
-const apikey = "f25a2.a1c36.b8bd1.c9b90.e69fa.ff6d6.89."; //Remove all punctuations and comment section to use the key
-*/
+
+const apikey = "f25a2a1c36b8bd1c9b90e69faff6d689"; //Remove all 
+
 function App() {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
