@@ -6,25 +6,30 @@ import './style.css'; // Import CSS for styling
 const Register = () => {
     const [formData, setFormData] = useState({
         username: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     });
     const [message, setMessage] = useState('');
 
-    const { username, password } = formData;
+    const { username, password, confirmPassword } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = async e => {
         e.preventDefault();
+        if (password !== confirmPassword) {
+            setMessage('Passwords do not match');
+            return;
+        }
         try {
             const res = await axios.post('http://localhost:5000/api/auth/register', {
                 username,
                 password
             });
-            setMessage('Registered successfully'); // Set success message
+            setMessage('Registered successfully');
         } catch (err) {
             console.error(err.response.data);
-            setMessage('Failed to register, User already exists'); // Set error message
+            setMessage('Failed to register, User already exists');
         }
     };
 
@@ -34,6 +39,7 @@ const Register = () => {
             <form onSubmit={onSubmit}>
                 <input type="text" placeholder="Username" name="username" value={username} onChange={onChange} required />
                 <input type="password" placeholder="Password" name="password" value={password} onChange={onChange} required />
+                <input type="password" placeholder="Confirm Password" name="confirmPassword" value={confirmPassword} onChange={onChange} required />
                 <button type="submit">Register</button>
             </form>
             <p className="message">{message}</p>
