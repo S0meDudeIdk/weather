@@ -6,16 +6,16 @@ const readline = require('readline');
 // Array of server objects with names and paths
 const servers = [
   {
-    name: 'Dashboard v2.0',
-    path: path.resolve(__dirname, '../Dashboard v2.0/server/index.js'),
+    name: 'Dashboard',
+    path: path.resolve(__dirname, '../Dashboard/server/index.js'),
   },
   {
     name: 'General',
     path: path.resolve(__dirname, '../General/server/index.js'),
   },
   {
-    name: 'Login database - Prototype for users',
-    path: path.resolve(__dirname, '../Login database - Prototype for users/server/index.js'),
+    name: 'Login',
+    path: path.resolve(__dirname, '../Login/server/index.js'),
   },
 ];
 
@@ -131,6 +131,8 @@ function displayMenu() {
   console.log('stop <number>    - Stop a server');
   console.log('status <number>  - Check server status');
   console.log('restart <number> - Restart a server');
+  console.log('help             - Display this menu');
+  console.log('clear            - Clear the console');
   console.log('exit             - Exit the program\n');
 }
 
@@ -152,7 +154,11 @@ function handleCommand(input) {
     return;
   }
 
-  if (['start', 'stop', 'status', 'restart'].includes(command)) {
+  if (command === 'help') {
+    displayMenu();
+  } else if (command === 'clear') {
+    console.clear();
+  } else if (['start', 'stop', 'status', 'restart'].includes(command)) {
     if (isNaN(index) || index < 0 || index >= servers.length) {
       console.log('Invalid server number.');
     } else {
@@ -172,7 +178,7 @@ function handleCommand(input) {
       }
     }
   } else {
-    console.log('Invalid command. Please use start, stop, status, restart, or exit.');
+    console.log('Invalid command. Please use start, stop, status, restart, help, clear, or exit.');
   }
 
   promptCommand();
