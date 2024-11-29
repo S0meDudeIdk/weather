@@ -993,7 +993,10 @@ body {
     .search-wrapper > .m-icon { display: block; }
   
     .search-field,
-    .search-view .view-list { background-color: var(--surface); }
+    .search-view .view-list { 
+      background-color: var(--surface); 
+      background-color: #00000025; 
+    }
   
     .search-field {
       height: 56px;

@@ -3,6 +3,8 @@
 import { fetchData, url } from "./api.js";
 import * as module from "./module.js";
 
+
+
 /**
  * Add event listener on multiple elements
  * @param {NodeList} elements Eelements node array
@@ -29,7 +31,7 @@ const searchField = document.querySelector("[data-search-field]");
 const searchResult = document.querySelector("[data-search-result]");
 
 let searchTimeout = null;
-const serachTimeoutDuration = 500;
+const searchTimeoutDuration = 500;
 
 searchField.addEventListener("input", function () {
 
@@ -74,15 +76,69 @@ searchField.addEventListener("input", function () {
           items.push(searchItem.querySelector("[data-search-toggler]"));
         }
 
-        addEventOnElements(items, "click", function () {
+        // addEventOnElements(items, "click", function () {
+        //   toggleSearch();
+        //   searchResult.classList.remove("active");
+        // })
+
+        addEventOnElements(items, "click", function (event) {
+          event.preventDefault(); // Prevent default link behavior
+  
+          const href = this.getAttribute('href');
+          const urlParams = new URLSearchParams(href.slice(href.indexOf('?')));
+          const lat = urlParams.get('lat');
+          const lon = urlParams.get('lon');
+  
+          // Fetch weather data for the selected location
+          fetchWeatherData(lat, lon)
+            .then(weatherData => {
+              // Send weather data to backend for storage
+              saveWeatherData(weatherData);
+  
+              // Navigate to the weather page after saving data
+              window.location.href = href;
+            })
+            .catch(error => {
+              console.error('Error fetching weather data:', error);
+            });
+  
           toggleSearch();
           searchResult.classList.remove("active");
-        })
+        });
       });
-    }, serachTimeoutDuration);
+    }, searchTimeoutDuration);
   }
 
 });
+
+// Function to fetch weather data based on latitude and longitude
+async function fetchWeatherData(lat, lon) {
+  const apiKey = "f25a2a1c36b8bd1c9b90e69faff6d689";
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+// Function to send weather data to the backend
+async function saveWeatherData(data) {
+  try {
+    const response = await axios.post('http://localhost:5100/api/weather', {
+      city: data.name,
+      country: data.sys.country,
+      temperature: Math.floor(data.main.temp - 273.15), // Convert Kelvin to Celsius
+      description: data.weather[0].description,
+      icon: data.weather[0].icon,
+    });
+    console.log('Weather data saved to database:', response.data);
+  } catch (error) {
+    console.error('Error saving weather data to database:', error);
+  }
+}
 
 
 const container = document.querySelector("[data-container]");

@@ -154,8 +154,9 @@ nav .menu-items li.active a ion-icon {
 
 .container .boxes {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: none;
+    gap: 100px;
 }
 
 .container .boxes .box {

@@ -4,11 +4,14 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const config = require('./config');
 const authRoutes = require('./routes/auth');
+// const createAdminAccount = require("./scripts/admin");
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
+
+// createAdminAccount();
 
 mongoose.connect(config.mongoURI, { useNewUrlParser: true, 
                                     useUnifiedTopology: true })

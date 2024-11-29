@@ -33,7 +33,7 @@ document.getElementById('theme-selector').addEventListener('change', function() 
 // Fetch weather data from the server
 async function fetchWeatherData() {
   try {
-      const response = await fetch('http://localhost:5000/api/weather');
+      const response = await fetch('http://localhost:5050/api/weather');
       const data = await response.json();
       displayWeatherData(data);
   } catch (error) {
@@ -80,7 +80,7 @@ function displayWeatherData(weatherData) {
 
 async function fetchUserData() {
   try {
-      const response = await fetch('http://localhost:5000/api/users');
+      const response = await fetch('http://localhost:5050/api/users');
       const data = await response.json();
       console.log('User data fetched', data);
       displayUserData(data);
@@ -119,10 +119,28 @@ function displayUserData(userData) {
   tableContainer.appendChild(table);
 }
 
+// Fetch total searches and total users data
+async function fetchTotalSearchesAndUsers() {
+  try {
+    const totalSearchesResponse = await fetch('http://localhost:5050/api/total-searches');
+    const totalSearchesData = await totalSearchesResponse.json();
+
+    const totalUsersResponse = await fetch('http://localhost:5050/api/total-users');
+    const totalUsersData = await totalUsersResponse.json();
+
+    // Update the HTML elements with the fetched data
+    document.querySelector('.box.box1 .number').textContent = totalSearchesData.totalSearches;
+    document.querySelector('.box.box2 .number').textContent = totalUsersData.totalUsers;
+  } catch (error) {
+    console.error('Error fetching total searches and users data:', error);
+  }
+}
+
 // Call the fetchWeatherData function when the page loads
 window.onload = function(){
   fetchWeatherData();
   fetchUserData();
+  fetchTotalSearchesAndUsers();
 }
 
 // Existing code for theme toggle and navigation
