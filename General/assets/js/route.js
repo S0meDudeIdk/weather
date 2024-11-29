@@ -32,6 +32,8 @@ const checkHash = function () {
   routes.get(route) ? routes.get(route)(query) : error404();
 }
 
+
+
 window.addEventListener("hashchange", checkHash);
 
 window.addEventListener("load", function () {

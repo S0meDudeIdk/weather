@@ -5,7 +5,7 @@ const cors = require('cors');
 const axios = require('axios');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5050;
 
 // Replace 'YOUR_MONGODB_URI' with your actual MongoDB connection URI
 /*
@@ -39,16 +39,47 @@ const UserData = new mongoose.Schema ({
 const userdatas = userDB.model('userdatas', UserData);
 const users = userDB.model('users', UserData);
 
+// async function moveDocuments() {
+//   try{
+//     const docs = await users.find().lean(); //get data from wrong collection
+//     await userdatas.create(docs); //move to correct collection
+//     await users.deleteMany({});
+//     console.log('Removed successfully'); //Prompt to notify successful movement
+//   } catch (error) {
+//     console.error('Error, cannot move collection:', error);
+//   }
+// } 
+
 async function moveDocuments() {
-  try{
-    const docs = await users.find().lean(); //get data from wrong collection
-    await userdatas.create(docs); //move to correct collection
-    await users.deleteMany({});
-    console.log('Removed successfully'); //Prompt to notify successful movement
+  try {
+    const docs = await users.find().lean(); // Get data from `users`
+
+    for (const doc of docs) {
+      // Skip documents where the username is "admin"
+      if (doc.username === "admin") {
+        console.log(`Skipped document with username: admin`);
+        continue;
+      }
+
+      // Check if a document with the same `username` already exists in `userdatas`
+      const exists = await userdatas.findOne({ username: doc.username });
+
+      if (!exists) {
+        await userdatas.create(doc); // Move the document to `userdatas` if not duplicate
+        console.log(`Moved document with username: ${doc.username}`);
+      } else {
+        console.log(`Skipped duplicate document with username: ${doc.username}`);
+      }
+    }
+
+    console.log('Document transfer completed.');
   } catch (error) {
-    console.error('Error, cannot move collection:', error);
+    console.error('Error moving documents:', error);
   }
-} 
+}
+
+
+
 
 moveDocuments();
 
@@ -121,7 +152,21 @@ app.get('/api/users', async (req, res) => {
   }
 });
 
+// Create API endpoint to fetch total searches
+app.get('/api/total-searches', async (req, res) => {
+  const weatherDataCount = await WeatherData.countDocuments();
+  res.json({ totalSearches: weatherDataCount });
+});
+
+// Create API endpoint to fetch total users
+app.get('/api/total-users', async (req, res) => {
+  const userDataCount = await userdatas.countDocuments();
+  res.json({ totalUsers: userDataCount });
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+

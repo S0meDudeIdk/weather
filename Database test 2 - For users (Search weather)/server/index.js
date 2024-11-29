@@ -5,7 +5,7 @@ const cors = require('cors');
 const axios = require('axios');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5100;
 
 // Replace 'YOUR_MONGODB_URI' with your actual MongoDB connection URI
 const MONGODB_URI = 'mongodb://localhost:27017/weatherforecast';

@@ -1,12 +1,15 @@
 'use strict';
 
-const api_key = "lol";
+const api_key = "f25a2a1c36b8bd1c9b90e69faff6d689";
+
 
 /**
  * Fetch data from server
  * @param {string} URL API url
  * @param {Function} callback callback
  */
+
+
 export const fetchData = function (URL, callback) {
   fetch(`${URL}&appid=${api_key}`)
     .then(res => res.json())
