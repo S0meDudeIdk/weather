@@ -157,7 +157,7 @@ git remote -v # Confirm the changes
 
 2. **Host the Servers Using Server Hub**
 - Open a terminal window.
-- Navigate to the `Server Hub` directory ()
+- Navigate to the `Server Hub` directory.
 - Run `server-hub.js` with this command: ```node server-hub.js```
 - **Server Hub Commands:**
     - Display Available Servers and Commands: `help`
