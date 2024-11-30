@@ -1,7 +1,28 @@
 'use strict';
 
-const api_key = "f25a2a1c36b8bd1c9b90e69faff6d689";
+// Variable to store the API key
+export let apiKey = '';
 
+// Function to fetch the API key from apikey.txt
+export function getApiKey() {
+  return new Promise((resolve, reject) => {
+    if (apiKey !== '') {
+      // API key is already fetched
+      resolve(apiKey);
+    } else {
+      fetch('../../API/apikey.txt') // Adjust the path based on your project structure
+        .then(response => response.text())
+        .then(text => {
+          apiKey = text.trim();
+          resolve(apiKey);
+        })
+        .catch(error => {
+          console.error('Error fetching API key:', error);
+          reject(error);
+        });
+    }
+  });
+}
 
 /**
  * Fetch data from server
@@ -11,9 +32,18 @@ const api_key = "f25a2a1c36b8bd1c9b90e69faff6d689";
 
 
 export const fetchData = function (URL, callback) {
-  fetch(`${URL}&appid=${api_key}`)
-    .then(res => res.json())
-    .then(data => callback(data));
+  getApiKey()
+    .then(apiKey => {
+      fetch(`${URL}&appid=${apiKey}`)
+        .then(res => res.json())
+        .then(data => callback(data))
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    })
+    .catch(error => {
+      console.error('Error fetching API key:', error);
+    });
 }
 
 export const url = {

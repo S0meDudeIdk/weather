@@ -1,6 +1,7 @@
 'use strict';
 
 import { fetchData, url } from "./api.js";
+import { getApiKey } from './api.js';
 import * as module from "./module.js";
 
 
@@ -113,11 +114,17 @@ searchField.addEventListener("input", function () {
 
 // Function to fetch weather data based on latitude and longitude
 async function fetchWeatherData(lat, lon) {
-  const apiKey = "f25a2a1c36b8bd1c9b90e69faff6d689";
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-
   try {
+    // Retrieve the API key using getApiKey()
+    const apiKey = await getApiKey();
+
+    // Construct the API URL using the fetched API key
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+    // Make the API request using axios
     const response = await axios.get(url);
+
+    // Return the weather data
     return response.data;
   } catch (error) {
     throw error;
