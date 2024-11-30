@@ -3,29 +3,45 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css'; 
 
-const apikey = "f25a2a1c36b8bd1c9b90e69faff6d689";
 
 function App() {
+  const [apiKey, setApiKey] = useState('');
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
+    // Fetch the API key from the apikey.txt file
+    fetch('../API/apikey.txt')
+      .then(response => response.text())
+      .then(text => {
+        setApiKey(text.trim());
+        // After setting the API key, fetch the initial weather data
+        getCurrentLocationWeather(text.trim());
+      })
+      .catch(error => {
+        console.error('Error fetching API key:', error);
+      });
+  }, []);
+
+  const getCurrentLocationWeather = (apiKey) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         const { latitude, longitude } = position.coords;
-        const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
 
-        fetchWeatherData(url);
+        fetchWeatherData(url, apiKey);
       });
+    } else {
+      console.error('Geolocation is not supported by this browser.');
     }
-  }, []);
+  };
 
-  const fetchWeatherData = async (url) => {
+  const fetchWeatherData = async (url, apiKey) => {
     try {
       const response = await axios.get(url);
       const data = response.data;
       console.log(data);
-      weatherReport(data);
+      weatherReport(data, apiKey);
       setWeatherData(data);
       // Send data to backend for storage
       saveWeatherData(data);
@@ -35,12 +51,16 @@ function App() {
   };
 
   const searchByCity = async () => {
+    if (!apiKey) {
+      console.error('API key is not loaded yet.');
+      return;
+    }
     try {
-      const urlsearch = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`;
+      const urlsearch = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
       const response = await axios.get(urlsearch);
       const data = response.data;
       console.log(data);
-      weatherReport(data);
+      weatherReport(data, apiKey);
       setWeatherData(data);
       // Send data to backend for storage
       saveWeatherData(data);
@@ -50,23 +70,8 @@ function App() {
     setCity('');
   };
 
-  const saveWeatherData = async (data) => {
-    try {
-      const response = await axios.post('http://localhost:5000/api/weather', {
-        city: data.name,
-        country: data.sys.country,
-        temperature: Math.floor(data.main.temp - 273),
-        description: data.weather[0].description,
-        icon: data.weather[0].icon,
-      });
-      console.log('Weather data saved to database:', response.data);
-    } catch (error) {
-      console.error('Error saving weather data to database:', error);
-    }
-  };
-
-  const weatherReport = async (data) => {
-    const urlcast = `http://api.openweathermap.org/data/2.5/forecast?q=${data.name}&appid=${apikey}`;
+  const weatherReport = async (data, apiKey) => {
+    const urlcast = `https://api.openweathermap.org/data/2.5/forecast?q=${data.name}&appid=${apiKey}`;
     try {
       const response = await axios.get(urlcast);
       const forecast = response.data;
@@ -75,17 +80,17 @@ function App() {
       dayForecast(forecast);
 
       console.log(data);
-      document.getElementById('city').innerText = data.name + ', ' + data.sys.country;
+      document.getElementById('city').innerText = `${data.name}, ${data.sys.country}`;
       console.log(data.name, data.sys.country);
 
       console.log(Math.floor(data.main.temp - 273));
-      document.getElementById('temperature').innerText = Math.floor(data.main.temp - 273) + ' °C';
+      document.getElementById('temperature').innerText = `${Math.floor(data.main.temp - 273)} °C`;
 
       document.getElementById('clouds').innerText = data.weather[0].description;
       console.log(data.weather[0].description);
 
       let icon1 = data.weather[0].icon;
-      let iconurl = "http://api.openweathermap.org/img/w/" + icon1 + ".png";
+      let iconurl = `https://openweathermap.org/img/w/${icon1}.png`;
       document.getElementById('img').src = iconurl;
     } catch (error) {
       console.error('Error fetching forecast data:', error);
