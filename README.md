@@ -205,15 +205,15 @@ Distributed under the GPL-3.0. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Group Member
 
-Võ Hồng Anh             - ITCSIU22309 - ITCSIU22309@student.hcmiu.edu.vn
-Nguyễn Công Sơn         - ITCSIU22300 - ITCSIU22300@student.hcmiu.edu.vn
-Phạm Vũ Hoàng Bảo       - ITCSIU22250 - ITCSIU22250@student.hcmiu.edu.vn
-Thiên Thế Long          - ITCSIU22302 - ITCSIU22302@student.hcmiu.edu.vn
-Trầm Minh Khang         - ITCSIU22307 - ITCSIU22307@student.hcmiu.edu.vn
-Đào Nguyên Công Danh    - ITITWE22111 - ITITWE22111@student.hcmiu.edu.vn
-Đàm Gia Hào             - ITITIU22049 - ITITIU22049@student.hcmiu.edu.vn
-Đoàn Đức Tiến           - ITITIU21330 - ITITIU21330@student.hcmiu.edu.vn
-Nguyễn Gia Huy          - ITITIU21214 - ITITIU21214@student.hcmiu.edu.vn
+- Võ Hồng Anh             - ITCSIU22309 - ITCSIU22309@student.hcmiu.edu.vn
+- Nguyễn Công Sơn         - ITCSIU22300 - ITCSIU22300@student.hcmiu.edu.vn
+- Phạm Vũ Hoàng Bảo       - ITCSIU22250 - ITCSIU22250@student.hcmiu.edu.vn
+- Thiên Thế Long          - ITCSIU22302 - ITCSIU22302@student.hcmiu.edu.vn
+- Trầm Minh Khang         - ITCSIU22307 - ITCSIU22307@student.hcmiu.edu.vn
+- Đào Nguyên Công Danh    - ITITWE22111 - ITITWE22111@student.hcmiu.edu.vn
+- Đàm Gia Hào             - ITITIU22049 - ITITIU22049@student.hcmiu.edu.vn
+- Đoàn Đức Tiến           - ITITIU21330 - ITITIU21330@student.hcmiu.edu.vn
+- Nguyễn Gia Huy          - ITITIU21214 - ITITIU21214@student.hcmiu.edu.vn
 
 Project Link: [https://github.com/Danoative/RealtimeWeatherForecastWebsite](https://github.com/Danoative/RealtimeWeatherForecastWebsite)
 
