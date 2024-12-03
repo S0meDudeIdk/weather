@@ -43,7 +43,7 @@ async function fetchWeatherData() {
 
 // Function to display the weather data in your dashboard
 function displayWeatherData(weatherData) {
-  const tableContainer = document.querySelector('.userDetailsTable div'); // Adjust the selector as needed
+  const tableContainer = document.querySelector('.userDetailsTable .table-container'); // Adjust the selector as needed
   tableContainer.innerHTML = ''; // Clear existing data
 
   // Create a table element
@@ -90,7 +90,7 @@ async function fetchUserData() {
 }
 
 function displayUserData(userData) {
-  const tableContainer = document.querySelector('.activityTable div'); // Adjust the selector as needed
+  const tableContainer = document.querySelector('.activityTable .table-container'); // Adjust the selector as needed
   tableContainer.innerHTML = ''; // Clear existing data
 
   // Create a table element

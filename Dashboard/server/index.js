@@ -15,9 +15,9 @@ mongoose.connect(WEATHER, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connect(USER, { useNewUrlParser: true, useUnifiedTopology: true });*/
 
 // Connect to the weather database 
-const weatherDB = mongoose.createConnection('mongodb://localhost:27017/weatherforecast', { useNewUrlParser: true, useUnifiedTopology: true }); 
+const weatherDB = mongoose.createConnection('mongodb+srv://admin:4dm1n@cluster0.fsnmw.mongodb.net/weatherforecast', { useNewUrlParser: true, useUnifiedTopology: true }); 
 // Connect to the user database 
-const userDB = mongoose.createConnection('mongodb://localhost:27017/user', { useNewUrlParser: true, useUnifiedTopology: true });
+const userDB = mongoose.createConnection('mongodb+srv://admin:4dm1n@cluster0.fsnmw.mongodb.net/user', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(cors());
 app.use(express.json());
