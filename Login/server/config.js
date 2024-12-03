@@ -1,5 +1,5 @@
 // server/config.js
 module.exports = {
-    mongoURI: 'mongodb://localhost:27017/user',
+    mongoURI: 'mongodb+srv://admin:4dm1n@cluster0.fsnmw.mongodb.net/user',
     jwtSecret: 'hello'
 };

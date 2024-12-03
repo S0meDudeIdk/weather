@@ -995,7 +995,7 @@ body {
     .search-field,
     .search-view .view-list { 
       background-color: var(--surface); 
-      background-color: #00000025; 
+      background-color: #00000071; 
     }
   
     .search-field {
