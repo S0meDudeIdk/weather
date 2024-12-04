@@ -442,6 +442,39 @@ nav {
     background-color: var(--background-color);
 }
 
+.action-btn {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s;
+}
+
+.action-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.edit-btn {
+    color: #007bff;
+}
+
+.delete-btn {
+    color: #dc3545;
+}
+
+.edit-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.action-btn.apply-btn {
+background-color: #28a745;
+color: #fff;
+}
+
 
 /* Remove/Add comment notation to the below section to disable/enable the glowing effect */
 
