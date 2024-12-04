@@ -154,8 +154,16 @@ app.get('/api/users', async (req, res) => {
 
 // Create API endpoint to fetch total searches
 app.get('/api/total-searches', async (req, res) => {
-  const weatherDataCount = await WeatherData.countDocuments();
-  res.json({ totalSearches: weatherDataCount });
+  try {
+    // Count the total number of weather data entries
+    const totalSearchesCount = await WeatherData.countDocuments();
+
+    // Send the count as a JSON response
+    res.json({ totalSearches: totalSearchesCount });
+  } catch (error) {
+    console.error('Error fetching total searches:', error);
+    res.status(500).json({ error: 'Failed to fetch total searches' });
+  }
 });
 
 // Create API endpoint to fetch total users
@@ -185,7 +193,38 @@ app.put('/api/weather/:id', async (req, res) => {
   }
 });
 
+// Route to handle deleting weather data
+app.delete('/api/weather/:id', async (req, res) => {
+  const { id } = req.params;
 
+  try {
+    // Delete the weather data from the database
+    const result = await WeatherData.findByIdAndDelete(id);
+
+    if (!result) {
+      return res.status(404).json({ error: 'Weather data not found' });
+    }
+
+    res.json({ message: 'Weather data deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting weather data:', error);
+    res.status(500).json({ error: 'Failed to delete weather data' });
+  }
+});
+
+// Route to get total number of searches
+app.get('/api/total-searches', async (req, res) => {
+  try {
+    // Count the total number of weather data entries
+    const totalSearchesCount = await WeatherData.countDocuments();
+
+    // Send the count as a JSON response
+    res.json({ totalSearches: totalSearchesCount });
+  } catch (error) {
+    console.error('Error fetching total searches:', error);
+    res.status(500).json({ error: 'Failed to fetch total searches' });
+  }
+});
 
 // Start the server
 app.listen(PORT, () => {

@@ -274,7 +274,7 @@ function handleEdit(row, data) {
   const deleteButton = row.querySelector('.delete-btn');
 
   applyButton.addEventListener('click', () => handleApply(row, data));
-  deleteButton.addEventListener('click', () => handleDelete(data.id));
+  deleteButton.addEventListener('click', () => handleDelete(data._id));
 }
 
 function handleApply(row, originalData) {
@@ -336,6 +336,9 @@ function handleDelete(id) {
     deleteWeatherData(id)
       .then(() => {
         fetchWeatherData();
+
+        // Update the total searches and users count
+        fetchTotalSearchesAndUsers();
       })
       .catch(error => {
         console.error('Error deleting data:', error);
