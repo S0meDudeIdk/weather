@@ -164,6 +164,29 @@ app.get('/api/total-users', async (req, res) => {
   res.json({ totalUsers: userDataCount });
 });
 
+
+// Route to handle updating weather data
+app.put('/api/weather/:id', async (req, res) => {
+  const { id } = req.params;
+  const updatedData = req.body;
+
+  try {
+    // Update the weather data in the database
+    const result = await WeatherData.findByIdAndUpdate(id, updatedData, { new: true });
+
+    if (!result) {
+      return res.status(404).json({ error: 'Weather data not found' });
+    }
+
+    res.json({ message: 'Weather data updated successfully', data: result });
+  } catch (error) {
+    console.error('Error updating weather data:', error);
+    res.status(500).json({ error: 'Failed to update weather data' });
+  }
+});
+
+
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
