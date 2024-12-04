@@ -39,17 +39,6 @@ const UserData = new mongoose.Schema ({
 const userdatas = userDB.model('userdatas', UserData);
 const users = userDB.model('users', UserData);
 
-// async function moveDocuments() {
-//   try{
-//     const docs = await users.find().lean(); //get data from wrong collection
-//     await userdatas.create(docs); //move to correct collection
-//     await users.deleteMany({});
-//     console.log('Removed successfully'); //Prompt to notify successful movement
-//   } catch (error) {
-//     console.error('Error, cannot move collection:', error);
-//   }
-// } 
-
 async function moveDocuments() {
   try {
     const docs = await users.find().lean(); // Get data from `users`
@@ -120,27 +109,6 @@ app.get('/api/weather', async (req, res) => {
   }
 });
 
-/*app.post('/api/users', async (req, res) => {
-  try {
-    // Extract weather data from request body
-    const { username, password } = req.body;
-
-    // Create a new document using the WeatherData model
-    const userData = new UserData({
-      username,
-      password,
-    });
-
-    // Save the weather data to the database
-    await userData.save();
-
-    // Respond with success message
-    res.json({ message: 'User data saved successfully' });
-  } catch (error) {
-    console.error('Error saving user data:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});*/
 
 app.get('/api/users', async (req, res) => {
   try {
@@ -223,6 +191,25 @@ app.get('/api/total-searches', async (req, res) => {
   } catch (error) {
     console.error('Error fetching total searches:', error);
     res.status(500).json({ error: 'Failed to fetch total searches' });
+  }
+});
+
+// Route to handle deleting user data
+app.delete('/api/users/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Use the correct Model corresponding to your collection
+    const result = await userdatas.findByIdAndDelete(id);
+
+    if (!result) {
+      return res.status(404).json({ error: 'User data not found' });
+    }
+
+    res.json({ message: 'User data deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting user data:', error);
+    res.status(500).json({ error: 'Failed to delete user data' });
   }
 });
 
