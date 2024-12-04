@@ -59,22 +59,19 @@
                     <i class="uil uil-times form_close"></i>
                     <!-- LOGIN FORM -->
                     <div class="form login_form">
-                        <form action="/login">
+                        <form action="/login" id="loginForm">
                             <h2>Login</h2>
-
-                            
-
                             <div class="input_box">
-                                <input type="text" placeholder="Enter Username" required/>
+                                <input type="text" name="username" placeholder="Enter Username" required/>
                                 <i class="uil uil-user user"></i>
                             </div>
                             <div class="input_box">
-                                <input type="password" placeholder="Enter Password" required/>
+                                <input type="password" name="password" placeholder="Enter Password" required/>
                                 <i class="uil uil-lock password"></i>
                                 <i class="uil uil-eye-slash pw_hide"></i>
                             </div>
 
-                            <button class="button">Login</button>
+                            <button class="button" type="submit">Login</button>
 
                             <div class="login_signup"> Don't have an account? <a href="#" id="signup">Signup</a></div>
                         </form>
@@ -306,7 +303,43 @@
 
 
     </script>
-    
+
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        const username = document.querySelector('#loginForm input[name="username"]').value;
+        const password = document.querySelector('#loginForm input[name="password"]').value;
+
+        fetch('http://localhost:5000/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.token) {
+                // Login successful
+                if (data.isAdmin) {
+                    // Redirect admin users to the Dashboard
+                    window.location.href = '../Dashboard/client/admin.html';
+                } else {
+                    // Redirect regular users to general_ui.html
+                    window.location.href = 'general_ui.html';
+                }
+            } else {
+                // Handle login errors
+                alert(data.msg || 'Invalid credentials');
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert('An error occurred during login');
+        });
+    });
+    </script>
 
     <!-- TYPING JS Link -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
