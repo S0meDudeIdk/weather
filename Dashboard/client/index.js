@@ -196,7 +196,18 @@ function displayUserData(userData) {
 
     // Add event listener for Delete button
     const deleteButton = row.querySelector('.delete-btn');
-    deleteButton.addEventListener('click', () => handleDeleteUser(data._id));
+    deleteButton.addEventListener('click', () => {
+      const confirmation = confirm('Are you sure you want to delete this user?');
+      if (confirmation) {
+        deleteUserData(data._id)
+          .then(() => {
+            fetchUserData(); // Refresh the user data after deletion
+          })
+          .catch(error => {
+            console.error('Error deleting user data:', error);
+          });
+      }
+    });
   });
 
   tableContainer.appendChild(table);
@@ -362,4 +373,18 @@ async function deleteWeatherData(id) {
   }
 }
 
+async function deleteUserData(id) {
+  try {
+    const response = await fetch(`http://localhost:5050/api/users/${id}`, {
+      method: 'DELETE',
+    });
 
+    if (!response.ok) {
+      throw new Error('Failed to delete user data');
+    }
+
+    console.log('User data deleted successfully');
+  } catch (error) {
+    console.error('Error deleting user data:', error);
+  }
+}
