@@ -177,25 +177,25 @@ git remote -v # Confirm the changes
 
 
 ### Starting the Application
-1. **For Users**
-  1.1. **Login**
+#### For Users
+1. **Login**
   - Click on the **Login** button.
   - Click on the **Sign Up** line to register a new account.
   - Once you have registered, log in using your credentials.
 
-  1.2. **Using The Weather Forecast**
+2. **Using The Weather Forecast**
   - Once logged in, you can already access the weather data in your current location.
   - If you want to check the weather in other locations, click on the Search bar and type the city.
 
-2. **For Admin**
-  2.1. **Sign Up**
+#### For Admin
+1. **Sign Up**
   - Go to `/Login/server/createAdmin.js`.
   - run `node createAdmin.js` to create an admin account.
 
-  2.2. **Login to Dashboard**
+2. **Login to Dashboard**
   - You can login using the admin credentials via the **Login** button in `homepage.html`.
 
-  2.3. **Using Dashboard**
+3. **Using Dashboard**
   - You can change or delete the weather data in the dashboard.
   - You can also delete user data in the dashboard.
 
