@@ -56,10 +56,16 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#configuration">Configuration</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li>
+      <a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#starting-the-website">Starting the Website</a></li>
+        <li><a href="#using-the-website">Using the Website</a></li>
+      </ul>
+    </li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Group Member</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -176,7 +182,7 @@ git remote -v # Confirm the changes
         - The default browser should open `homepage.html`.
 
 
-### Starting the Application
+### Using the Website
 #### For Users
 1. **Login**
   - Click on the **Login** button.
