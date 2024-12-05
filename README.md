@@ -126,12 +126,12 @@ The weather forecast system is a web-based application, designed to provide user
 - Create a file named `apikey.txt` (If `apikey.txt` does not exist in API folder).
 - Paste your API Key into `apikey.txt`.
 
-4. **Set Up MongoDB Connection**
+4. **Set Up MongoDB Connection** (Optional due to the database is in the cloud)
 - Open **MongoDB Compass**.
-- Click on **New Connection** and connect to `mongodb://localhost:27017`.
+- Click on **New Connection** and connect to `mongodb+srv://admin:4dm1n@cluster0.fsnmw.mongodb.net/`.
 - The application uses two databases:
     - `weatherforecast` for storing weather data.
-    - `user` for storing user data.
+    - `user` for storing user data (Including `userdatas` and `admindatas` collections).
 - No additional configuration is needed; the databases will be created automatically when the application runs.
 
 5. **Change Git Remote URL (Optional)**
@@ -149,11 +149,11 @@ git remote -v # Confirm the changes
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-### Starting the Application
+### Starting the Website
 
-1. **Start MongoDB Server**
+1. **Start MongoDB Server** (Optional because the database is in the cloud)
 - Open **MongoDB Compass**
-- Click **Connect** on the connection `localhost:27017`.
+- Click **Connect** on the connection `mongodb+srv://admin:4dm1n@cluster0.fsnmw.mongodb.net/`.
 
 2. **Host the Servers Using Server Hub**
 - Open a terminal window.
@@ -178,6 +178,28 @@ git remote -v # Confirm the changes
         - The default browser should open `homepage.html`.
 
 
+### Starting the Application
+1. **For Users**
+  1.1. **Login**
+  - Click on the **Login** button.
+  - Click on the **Sign Up** line to register a new account.
+  - Once you have registered, log in using your credentials.
+
+  1.2. **Using The Weather Forecast**
+  - Once logged in, you can already access the weather data in your current location.
+  - If you want to check the weather in other locations, click on the Search bar and type the city.
+
+2. **For Admin**
+  2.1. **Sign Up**
+  - Go to `/Login/server/createAdmin.js`.
+  - run `node createAdmin.js` to create an admin account.
+
+  2.2. **Login to Dashboard**
+  - You can login using the admin credentials via the **Login** button in `homepage.html`.
+
+  2.3. **Using Dashboard**
+  - You can change or delete the weather data in the dashboard.
+  - You can also delete user data in the dashboard.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
