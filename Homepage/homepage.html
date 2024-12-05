@@ -285,13 +285,6 @@
                 // Save username and token to localStorage
                 localStorage.setItem('username', data.username);
                 localStorage.setItem('token', data.token);
-
-                // Redirect to general_ui.html
-                if (data.username === 'admin') {
-                    window.location.href = '/Dashboard/client/admin.html';
-                } else {
-                    window.location.href = '/Homepage/general_ui.html';
-                }
             } else {
                 alert(data.msg || 'Error during login');
             }
