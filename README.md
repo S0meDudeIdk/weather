@@ -112,6 +112,41 @@ The weather forecast system is a web-based application, designed to provide user
   node -v
   npm -v
   ```
+- **Server Hub**
+  - To install the necessary module for the Server Hub, navigate to the directory and run:
+  ```
+  cd "<YOUR_PATH>\RealtimeWeatherForecastWebsite\Server Hub"
+  npm install
+  ```
+
+- **Dashboard Server**
+  - To install the necessary modules for the Dashboard server, navigate to the directory and run:
+  ```
+  cd "<YOUR_PATH>\RealtimeWeatherForecastWebsite\Dashboard\server"
+  npm install
+  ```
+
+- **Dashboard Client**
+  - To install the necessary modules for the Dashboard client, navigate to the directory and run:
+  ```
+  cd "<YOUR_PATH>\RealtimeWeatherForecastWebsite\Dashboard"
+  npm install
+  ```
+
+- **General Server**
+  - To install the necessary modules for the General server, navigate to the directory and run:
+  ```
+  cd "<YOUR_PATH>\RealtimeWeatherForecastWebsite\General\server"
+  npm install
+  ```
+
+- **Login Server**
+  - To install the necessary modules for the Login server, navigate to the directory and run:
+  ```
+  cd "<YOUR_PATH>\RealtimeWeatherForecastWebsite\Login\server"
+  npm install
+  ```
+
 - **MongoDB** installed and running.
     - Ensure **MongoDB** is running on `localhost:27017` (default).
     - Download **MongoDB** from [here](https://www.mongodb.com/try/download/community).
