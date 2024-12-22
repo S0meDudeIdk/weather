@@ -103,7 +103,7 @@ function displayWeatherData(weatherData) {
         <td>${data.country}</td>
         <td>${data.temperature}</td>
         <td>${data.description}</td>
-        <td><img src="http://api.openweathermap.org/img/w/${data.icon}.png" alt="${data.description}" /></td>
+        <td><img src="http://openweathermap.org/img/wn/${data.icon}.png" alt="${data.description}" /></td>
         <td>
             <button class="action-btn edit-btn">Edit</button>
             <button class="action-btn delete-btn">Delete</button>
@@ -264,6 +264,42 @@ document.getElementById('theme-selector').addEventListener('change', function() 
   }
 });
 
+function getIconCode(description) {
+  // Normalize the description
+  description = description.toLowerCase();
+
+  // Get the current hour
+  const currentHour = new Date().getHours();
+  const isDayTime = currentHour >= 6 && currentHour < 18 ? 'd' : 'n';
+
+  // Initialize icon code
+  let iconCode = '01'; // Default to clear sky
+
+  // Map descriptions to icon codes
+  if (description.includes('clear sky') || description.includes('clear')) {
+    iconCode = '01';
+  } else if (description.includes('few clouds')) {
+    iconCode = '02';
+  } else if (description.includes('scattered clouds')) {
+    iconCode = '03';
+  } else if (description.includes('broken clouds') || description.includes('overcast clouds')) {
+    iconCode = '04';
+  } else if (description.includes('shower rain') || description.includes('drizzle')) {
+    iconCode = '09';
+  } else if (description.includes('rain')) {
+    iconCode = '10';
+  } else if (description.includes('thunderstorm')) {
+    iconCode = '11';
+  } else if (description.includes('snow')) {
+    iconCode = '13';
+  } else if (description.includes('mist') || description.includes('fog') || description.includes('haze')) {
+    iconCode = '50';
+  }
+
+  // Return the full icon code with day/night suffix
+  return iconCode + isDayTime;
+}
+
 function handleEdit(row, data) {
   // Replace the table cells with input fields
   row.innerHTML = `
@@ -272,7 +308,7 @@ function handleEdit(row, data) {
     <td><input type="number" value="${data.temperature}" class="edit-input temperature-input" /></td>
     <td><input type="text" value="${data.description}" class="edit-input description-input" /></td>
     <td>
-      <img src="http://api.openweathermap.org/img/w/${data.icon}.png" alt="${data.description}" />
+      <img class="icon-preview" src="http://openweathermap.org/img/w/${data.icon}.png" alt="${data.description}" />
     </td>
     <td>
       <button class="action-btn apply-btn">Apply</button>
@@ -286,17 +322,30 @@ function handleEdit(row, data) {
 
   applyButton.addEventListener('click', () => handleApply(row, data));
   deleteButton.addEventListener('click', () => handleDelete(data._id));
+
+  // Add event listener to description input to update icon preview
+  const descriptionInput = row.querySelector('.description-input');
+  const iconPreview = row.querySelector('.icon-preview');
+
+  descriptionInput.addEventListener('input', function() {
+    const updatedDescription = descriptionInput.value;
+    const newIconCode = getIconCode(updatedDescription);
+    iconPreview.src = `http://openweathermap.org/img/w/${newIconCode}.png`;
+    iconPreview.alt = updatedDescription;
+  });
 }
+
 
 function handleApply(row, originalData) {
   // Collect the new data from input fields
+  const updatedDescription = row.querySelector('.description-input').value;
   const updatedData = {
     _id: originalData._id, // Include the '_id' field
     city: row.querySelector('.city-input').value,
     country: row.querySelector('.country-input').value,
     temperature: parseFloat(row.querySelector('.temperature-input').value),
-    description: row.querySelector('.description-input').value,
-    icon: originalData.icon
+    description: updatedDescription,
+    icon: getIconCode(updatedDescription) // Compute new icon code
   };
 
   // Show confirmation popup
