@@ -103,7 +103,7 @@ function displayWeatherData(weatherData) {
         <td>${data.country}</td>
         <td>${data.temperature}</td>
         <td>${data.description}</td>
-        <td><img src="http://openweathermap.org/img/wn/${data.icon}.png" alt="${data.description}" /></td>
+        <td><img src="http://openweathermap.org/img/w/${data.icon}.png" alt="${data.description}" /></td>
         <td>
             <button class="action-btn edit-btn">Edit</button>
             <button class="action-btn delete-btn">Delete</button>
@@ -264,13 +264,9 @@ document.getElementById('theme-selector').addEventListener('change', function() 
   }
 });
 
-function getIconCode(description) {
+function getIconCode(description, existingSuffix) {
   // Normalize the description
   description = description.toLowerCase();
-
-  // Get the current hour
-  const currentHour = new Date().getHours();
-  const isDayTime = currentHour >= 6 && currentHour < 18 ? 'd' : 'n';
 
   // Initialize icon code
   let iconCode = '01'; // Default to clear sky
@@ -296,8 +292,8 @@ function getIconCode(description) {
     iconCode = '50';
   }
 
-  // Return the full icon code with day/night suffix
-  return iconCode + isDayTime;
+  // Return the full icon code with the existing suffix
+  return iconCode + existingSuffix;
 }
 
 function handleEdit(row, data) {
@@ -323,13 +319,16 @@ function handleEdit(row, data) {
   applyButton.addEventListener('click', () => handleApply(row, data));
   deleteButton.addEventListener('click', () => handleDelete(data._id));
 
-  // Add event listener to description input to update icon preview
+  // Extract the existing suffix ('d' or 'n') from the original icon code
+  const existingSuffix = data.icon.slice(-1);
+
+  // Add event listener to the description input to update icon preview
   const descriptionInput = row.querySelector('.description-input');
   const iconPreview = row.querySelector('.icon-preview');
 
   descriptionInput.addEventListener('input', function() {
     const updatedDescription = descriptionInput.value;
-    const newIconCode = getIconCode(updatedDescription);
+    const newIconCode = getIconCode(updatedDescription, existingSuffix);
     iconPreview.src = `http://openweathermap.org/img/w/${newIconCode}.png`;
     iconPreview.alt = updatedDescription;
   });
@@ -339,13 +338,17 @@ function handleEdit(row, data) {
 function handleApply(row, originalData) {
   // Collect the new data from input fields
   const updatedDescription = row.querySelector('.description-input').value;
+
+  // Extract the existing suffix ('d' or 'n') from the original icon code
+  const existingSuffix = originalData.icon.slice(-1);
+
   const updatedData = {
     _id: originalData._id, // Include the '_id' field
     city: row.querySelector('.city-input').value,
     country: row.querySelector('.country-input').value,
     temperature: parseFloat(row.querySelector('.temperature-input').value),
     description: updatedDescription,
-    icon: getIconCode(updatedDescription) // Compute new icon code
+    icon: getIconCode(updatedDescription, existingSuffix) // Compute new icon code
   };
 
   // Show confirmation popup
