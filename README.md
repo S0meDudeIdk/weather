@@ -165,21 +165,6 @@ The weather forecast system is a web-based application, designed to provide user
 - Create a file named `apikey.txt` (If `apikey.txt` does not exist in API folder).
 - Paste your API Key into `apikey.txt`.
 
-4. **Set Up MongoDB Connection** (Optional due to the database is in the cloud)
-- Open **MongoDB Compass**.
-- Click on **New Connection** and connect to `mongodb+srv://admin:4dm1n@cluster0.fsnmw.mongodb.net/`.
-- The application uses two databases:
-    - `weatherforecast` for storing weather data.
-    - `user` for storing user data (Including `userdatas` and `admindatas` collections).
-- No additional configuration is needed; the databases will be created automatically when the application runs.
-
-5. **Change Git Remote URL (Optional)**
-- To avoid accidental pushes to the base project, change the git remote URL:
-```
-git remote set-url origin https://github.com/your_username/RealtimeWeatherForecastWebsite.git
-git remote -v # Confirm the changes
-```
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
