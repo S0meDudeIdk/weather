@@ -152,6 +152,17 @@ The weather forecast system is a web-based application, designed to provide user
     - Download **MongoDB** from [here](https://www.mongodb.com/try/download/community).
     - Download **MongoDB Compass** from [here](https://www.mongodb.com/try/download/compass)
 
+## Security Note
+
+🔒 **Important Security Information**
+
+This project uses environment variables to store sensitive credentials like database connection strings and API keys. 
+
+- **Never commit `.env` files** or any files containing sensitive credentials to version control
+- Use strong, unique passwords and JWT secrets
+- Regularly rotate your API keys and database credentials
+- The `.gitignore` file is configured to exclude sensitive files from being committed
+
 ### Configuration
 
 1. **Get a free API Key**
@@ -160,7 +171,26 @@ The weather forecast system is a web-based application, designed to provide user
    ```sh
    git clone https://github.com/Danoative/RealtimeWeatherForecastWebsite.git
    ```
-3. **Enter your API key**
+
+3. **Set up Environment Variables**
+- Copy the `.env.example` files to `.env` in each server directory:
+  ```sh
+  # In Login/server/
+  copy .env.example .env
+  
+  # In General/server/
+  copy .env.example .env
+  
+  # In Dashboard/server/
+  copy .env.example .env
+  ```
+- Edit each `.env` file and replace the placeholder values with your actual:
+  - MongoDB connection strings
+  - JWT secret key
+  - Other configuration values
+- **Important**: Never commit `.env` files to version control!
+
+4. **Enter your API key**
 - Navigate to the `/API/apikey.txt` directory.
 - Create a file named `apikey.txt` (If `apikey.txt` does not exist in API folder).
 - Paste your API Key into `apikey.txt`.
@@ -175,11 +205,19 @@ The weather forecast system is a web-based application, designed to provide user
 
 ### Starting the Website
 
-1. **Start MongoDB Server** (Optional because the database is in the cloud)
-- Open **MongoDB Compass**
-- Click **Connect** on the connection `mongodb+srv://admin:4dm1n@cluster0.fsnmw.mongodb.net/`.
+1. **Set up Environment Variables**
+- Copy `.env.example` files to `.env` in each server directory:
+  - `Login/server/.env`
+  - `General/server/.env`
+  - `Dashboard/server/.env`
+- Fill in your actual MongoDB connection strings and secrets in each `.env` file
+- **Never commit these `.env` files to version control!**
 
-2. **Host the Servers Using Server Hub**
+2. **Start MongoDB Server** (Optional if using cloud database)
+- Open **MongoDB Compass**
+- Connect using your actual MongoDB connection string (stored in your `.env` files)
+
+3. **Host the Servers Using Server Hub**
 - Open a terminal window.
 - Navigate to the `Server Hub` directory.
 - Run `server-hub.js` with this command: ```node server-hub.js```

@@ -1,4 +1,5 @@
 //server/index.js
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -14,10 +15,10 @@ const USER = 'mongodb://localhost:27017/user';
 mongoose.connect(WEATHER, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connect(USER, { useNewUrlParser: true, useUnifiedTopology: true });*/
 
-// Connect to the weather database 
-const weatherDB = mongoose.createConnection('mongodb+srv://admin:4dm1n@cluster0.fsnmw.mongodb.net/weatherforecast', { useNewUrlParser: true, useUnifiedTopology: true }); 
-// Connect to the user database 
-const userDB = mongoose.createConnection('mongodb+srv://admin:4dm1n@cluster0.fsnmw.mongodb.net/user', { useNewUrlParser: true, useUnifiedTopology: true });
+// Connect to the weather database using environment variables
+const weatherDB = mongoose.createConnection(process.env.WEATHER_DB_URI || 'mongodb://localhost:27017/weatherforecast', { useNewUrlParser: true, useUnifiedTopology: true }); 
+// Connect to the user database using environment variables
+const userDB = mongoose.createConnection(process.env.USER_DB_URI || 'mongodb://localhost:27017/user', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(cors());
 app.use(express.json());
